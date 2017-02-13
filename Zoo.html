@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+   <table width="80%">
+   	<tr>
+   		<td valign = "top" width="60%">
+   		    <span >Травоядные</span>
+   			<ul id = "grasseater">
+   			    
+   			    
+   				
+   			</ul>
+
+   		</td>
+
+   		<td valign = "top" >
+   		<span >Хищники</span>
+   		   <ul id = "predator">
+   		      
+   		   	   
+   		   </ul>
+   			
+            
+   		</td>
+   	</tr>
+
+
+   </table>
+   
+   
+   <div> 
+         <h2 >История записей</h2>
+         <ol id = "history">
+         	
+         </ol>
+
+
+
+
+
+
+   </div>
+
+
+   <script type="text/javascript" >
+
+         
+   	           var Eat_grass = document.getElementById('grasseater');
+        var predators = document.getElementById('predator');
+        var histor = document.getElementById('history');
+
+
+   	   
+
+
+   	    function AddAnimal (animal, group)
+           {
+   	    	debugger;
+   	    	var newLi = document.createElement('li');
+   	    	newLi.innerHTML = animal;
+   	    	group.appendChild(newLi);
+   	    	
+   	    	var now = new Date();
+   	    	var history_Item = '<strong>' + animal + '</strong>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; время поступления: ' + now.getHours() + ' ч. ' + now.getMinutes() + ' мин.';
+   	    	var Item = document.createElement('li');
+   	    	Item.innerHTML = history_Item;
+   	    	histor.appendChild(Item);
+
+   	    	setTimeout(sellAnimals,1000);
+
+
+   	    }
+
+
+   	function sellAnimals (){
+   		
+
+   		
+   	    	var data = prompt('введите название животного');
+   	    	//debugger;
+   	    	 
+   	    	 if(data == 'stop') return;
+
+            var animal = data.split(',');
+
+            if(animal[1] == '+')
+               {
+               	    //animal[1],animal[0],predators
+                      AddAnimal(animal[0],predators);
+                     
+               }
+            else if(animal[1] == '-')
+            {
+                    AddAnimal(animal[0],Eat_grass);
+                     
+            };
+
+             
+
+
+
+   	    
+   	};
+
+
+   	sellAnimals();    
+
+
+   </script>
+
+
+
+</body>
+</html>
